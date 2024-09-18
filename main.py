@@ -8,7 +8,6 @@ import streamlit as st
 st.set_page_config(
     page_title="Groqqle App",
     page_icon="🍓",  # Use a strawberry emoji as the favicon
-    layout="wide",
     initial_sidebar_state="collapsed"
 )
 
