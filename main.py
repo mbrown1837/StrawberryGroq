@@ -6,7 +6,7 @@ import streamlit as st
 
 # Set the page config with a strawberry emoji as the favicon
 st.set_page_config(
-    page_title="Groqqle App",
+    page_title="Strawberry Groq",
     page_icon="🍓",  # Use a strawberry emoji as the favicon
     initial_sidebar_state="collapsed"
 )
