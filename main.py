@@ -29,6 +29,7 @@ def get_groq_provider():
     return GroqProvider(api_key=st.session_state.api_key)
 
 def fetch_available_models():
+    api_key = st.session_state.api_key
     url = "https://api.groq.com/openai/v1/models"
     headers = {
         "Authorization": f"Bearer {api_key}",
