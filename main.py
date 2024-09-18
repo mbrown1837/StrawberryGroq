@@ -2,6 +2,17 @@ import streamlit as st
 import requests
 from pocketgroq import GroqProvider
 
+import streamlit as st
+
+# Set the page config with a strawberry emoji as the favicon
+st.set_page_config(
+    page_title="Groqqle App",
+    page_icon="🍓",  # Use a strawberry emoji as the favicon
+    layout="wide",
+    initial_sidebar_state="collapsed"
+)
+
+
 # Initialize session state
 if 'messages' not in st.session_state:
     st.session_state.messages = []
