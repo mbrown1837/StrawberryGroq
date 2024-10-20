@@ -3,6 +3,10 @@ import requests
 from pocketgroq import GroqProvider
 from pocketgroq.autonomous_agent import AutonomousAgent
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Set the page config with a strawberry emoji as the favicon
 st.set_page_config(
@@ -15,7 +19,7 @@ st.set_page_config(
 if 'messages' not in st.session_state:
     st.session_state.messages = []
 if 'api_key' not in st.session_state:
-    st.session_state.api_key = ''
+    st.session_state.api_key = os.getenv('GROQ_API_KEY')
 if 'available_models' not in st.session_state:
     st.session_state.available_models = []
 if 'selected_model' not in st.session_state:
@@ -23,7 +27,7 @@ if 'selected_model' not in st.session_state:
 
 def get_groq_provider():
     if not st.session_state.api_key:
-        st.error("No Groq API key found. Please set the GROQ_API_KEY environment variable or enter it manually.")
+        st.error("No Groq API key found. Please check your .env file.")
         return None
     return GroqProvider(api_key=st.session_state.api_key)
 
@@ -77,19 +81,11 @@ def main():
     st.write("This is a simple demo of the PocketGroq library's enhanced 'Chain of Thought' functionality with Autonomous Agent.")
     st.write("<a href='https://github.com/jgravelle/pocketgroq'>https://github.com/jgravelle/pocketgroq</a> |    <a href='https://www.youtube.com/watch?v=S5dY0DG-q-U'>https://www.youtube.com/watch?v=S5dY0DG-q-U</a>", unsafe_allow_html=True)
 
-    # Check for API key in environment variable
-    api_key = os.environ.get("GROQ_API_KEY")
-    if api_key:
-        st.session_state.api_key = api_key
-        st.success("Groq API key loaded from environment variable.")
-    else:
-        # API Key input
-        api_key = st.text_input("Enter your Groq API Key:", type="password")
-        if api_key:
-            st.session_state.api_key = api_key
-
     if st.session_state.api_key:
+        st.success("Groq API key loaded from .env file.")
         fetch_available_models()
+    else:
+        st.error("No Groq API key found. Please check your .env file.")
     
     # Model selection
     if st.session_state.available_models:
