@@ -77,7 +77,7 @@ def on_model_change():
     st.session_state.selected_model = st.session_state.model_selectbox
 
 def main():
-    st.title("Strawberry Groq DEMO")
+    st.title("Strawberry Groq DEMO 2.0")
     st.write("This is a simple demo of the PocketGroq library's enhanced 'Chain of Thought' functionality with Autonomous Agent.")
     st.write("<a href='https://github.com/jgravelle/pocketgroq'>https://github.com/jgravelle/pocketgroq</a> |    <a href='https://www.youtube.com/watch?v=S5dY0DG-q-U'>https://www.youtube.com/watch?v=S5dY0DG-q-U</a>", unsafe_allow_html=True)
 
